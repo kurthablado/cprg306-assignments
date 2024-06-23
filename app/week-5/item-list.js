@@ -12,8 +12,11 @@ export default function ItemList() {
     // Map JSON data to an array
     let itemsArray = itemsData.map((item) => ({...item})); 
 
+    // State  for sorting and grouping items
     let [sortBy, setSortBy] = useState("name");
+    let [groupBy, setGroupBy] = useState("category");
 
+    // Sort items by name or category
     if (sortBy != "name"){
         itemsArray.sort((a, b) =>{
             if (a[sortBy] < b[sortBy]) return -1;
@@ -24,6 +27,8 @@ export default function ItemList() {
     else {
         itemsArray.sort((a,b,) => a.name.localeCompare(b.name));
     }
+
+
     
     return(
         <section>            
