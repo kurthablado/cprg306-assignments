@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import Item from "./item";
 
-export default function ItemList({itemsData}) {
+export default function ItemList({items}) {
 
     let buttonStyle = "block m-4 p-2 bg-green-500 text-white w-64 rounded-lg text-center"
     
     // Map JSON data to an array
-    let itemsArray = [...itemsData];
+    let itemsArray = [...items];
 
     // State  for sorting and grouping items
     let [sortBy, setSortBy] = useState("name");

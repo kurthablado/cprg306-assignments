@@ -25,7 +25,7 @@ export default function Page() {
             <NewItem onAddItem={handleAddItem} />
 
             {/* Render ItemList component and pass items as a prop */}
-            <ItemList items={items} />
+            <ItemList items={itemsData} />
         </main>
     );
 }
