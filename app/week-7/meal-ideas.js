@@ -5,29 +5,13 @@ import { useEffect, useState } from "react"
 
 export default function MealIdeas({ ingredient }){
 
+    // 2. Define State Variables using the useState hook.
     const [meals, setMeals] = useState([]);
-
-    useEffect(() => {
-        const fetchMealIdeas = async (ingredient) => {
-            try {
-                const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-                const data = await response.json();
-                if (data && data.meals) {
-                    setMeals(data.meals);
-                } else {
-                    setMeals([]);
-                }
-            }
-            catch (error) {
-                console.log(`Error: ${error.message}`);
-                setMeals([]);
-            }
-        }
-    })
   
+    // loadMealIdeas Function
     
     useEffect( () => {
-        const loadMealIdeas = async (ingredient) => {
+        const loadMealIdeas = async () => {
         try {
             const mealIdeas = await fetchMealIdeas(ingredient);
             setMeals(mealIdeas);
@@ -35,18 +19,39 @@ export default function MealIdeas({ ingredient }){
         catch(error) {
             console.log(`Error: ${error.message}`);
         }
+    };
+
+    if (ingredient) {
+        loadMealIdeas();
     }
-    }, [])
+
+    }, [ingredient]);
         
 
     return(
         <div>
             <h2>Meals Ideas</h2>
             <ul>
-                {meals.map((meal, index) => (
-                    <li>{meal.name}</li>
+                {meals.map((meal) => (
+                    <li key={meal.idMeal}>
+                        {meal.strMeal}
+                    </li>
                 ))}
             </ul>
         </div>
     );
 }
+
+    // 3. Define API Fetching Function
+    // Takes ingredient as parameter, makes fetch request to theMealDB API. 
+    export async function fetchMealIdeas(ingredient) {
+            try {
+                const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`); // API endpoint.
+                const data = await response.json();
+                return data.meals; // Returns array of meals from the API response.
+            }
+            catch (error) {
+                console.log(`Error: ${error.message}`);
+                setMeals([]); // Returns empty array on error. 
+            }
+        }

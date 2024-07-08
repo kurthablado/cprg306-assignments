@@ -29,6 +29,8 @@ export default function Page() {
         setSelectedItemName(cleanItemName); // update selectedItemName state
     }
 
+    let ingredient = selectedItemName.toLowerCase();
+
     return(
         <main>
             <h1 className={headerStyle}>Shopping List</h1>
@@ -42,8 +44,8 @@ export default function Page() {
             </div>
             
             <div className="flex justify-center w-1/8 p-3">
-                {/* Render MealIdeas component and pass as a prop */}
-                <MealIdeas ingredient={handleItemSelect} />
+                {/* Render MealIdeas component and pass the selected ingredient */}
+                <MealIdeas ingredient={ingredient} />
             </div>
         
         </main>
