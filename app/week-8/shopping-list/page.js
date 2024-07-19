@@ -1,14 +1,18 @@
 "use client"
 
-import ItemList from "./item-list";
-import NewItem from "./new-item";
-import itemsData from "./items.json";
+import { useUserAuth } from "../_utils/auth-context";
+import ItemList from "../item-list";
+import NewItem from "../new-item";
+import itemsData from "../items.json";
+import MealIdeas from "../meal-ideas";
 import { useState } from "react";
-import MealIdeas from "./meal-ideas";
-
-let headerStyle = "text-4xl text-center font-bold mt-4";
 
 export default function Page() {
+    const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+
+    if (!user) {
+        return <p>Please sign in to continue</p>
+    }
 
     const [items, setItems] = useState(
         itemsData.map((item) => ({...item}))
@@ -31,7 +35,8 @@ export default function Page() {
 
     let ingredient = selectedItemName.toLowerCase();
 
-    return(
+
+    return (
         <main>
             <h1 className={headerStyle}>Shopping List</h1>
                 
@@ -50,4 +55,5 @@ export default function Page() {
         
         </main>
     );
+
 }
