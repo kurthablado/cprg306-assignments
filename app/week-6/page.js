@@ -9,14 +9,12 @@ let headerStyle = "text-4xl text-center font-bold mt-4";
 
 export default function Page() {
 
-    const [items, setItems] = useState(
-        itemsData.map((item) => ({...item}))
-    );
+    const [items, setItems] = useState(itemsData);
 
     // add new item to list
     const handleAddItem = (newItem) => {
         setItems([...items, newItem]);
-    }
+    };
 
     return(
         <main>
@@ -25,7 +23,7 @@ export default function Page() {
             <NewItem onAddItem={handleAddItem} />
 
             {/* Render ItemList component and pass items as a prop */}
-            <ItemList items={itemsData} />
+            <ItemList items={items} />
         </main>
     );
 }

@@ -11,16 +11,18 @@ export default function NewItem({onAddItem}){
 
     // Handling Functions
     const handleName = (event) => setName(event.target.value);
-
     const handleQuantity = (event) => setQuantity(event.target.value);
-
     const handleCategory = (event) => setCategory(event.target.value);
 
     // Handle Submit Function
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        let item = {
+        // Generate random id
+        const id = generateId();
+
+        // Create item object
+        const item = {
             id: id,
             name: name,
             quantity: quantity,
@@ -30,16 +32,18 @@ export default function NewItem({onAddItem}){
         // Call onAddItem function and pass item object
         onAddItem(newItem);
 
-        alert(`New Item Added! \nItem: ${id} \nName: ${name} \nQuantity: ${quantity} \nCategory: ${category}`);
-
         // Clear form after submission and reset to default
         setName("");
         setQuantity(1);
         setCategory("produce");
-    }
+    };
+
+    // Generate random id
+    const generateId = () => {
+        return Math.floor(Math.random() * 1000);
+    };
 
     
-
     return(
         <main className="border-4 border-yellow-300 m-3 p-4">
             <form className="p-2">
@@ -47,13 +51,27 @@ export default function NewItem({onAddItem}){
                 {/* Name */}
                 <div className="py-2">
                     <h3>Name</h3>
-                    <input className="text-black" required type="text" value={name} onChange={handleName} placeholder="Item Name" />
+                    <input 
+                        className="text-black" 
+                        required 
+                        type="text" 
+                        value={name} 
+                        onChange={handleName} 
+                        placeholder="Item Name" />
                 </div>
 
                 {/* Quantity */}
                 <div className="py-5">
                     <h3>Quantity</h3>
-                    <input className="text-black" required type="text" min="1" max="99" value={quantity} onChange={handleQuantity} placeholder={quantity} />
+                    <input 
+                        className="text-black" 
+                        required 
+                        type="text" 
+                        min="1" 
+                        max="99" 
+                        value={quantity} 
+                        onChange={handleQuantity} 
+                        placeholder={quantity} />
                 </div>
 
                 {/* Category */}
