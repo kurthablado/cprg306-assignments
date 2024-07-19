@@ -8,7 +8,7 @@ import { useState } from "react";
 let headerStyle = "text-4xl text-center font-bold mt-4";
 
 export default function Page() {
-
+    //Initialize items state with itemsData
     const [items, setItems] = useState(itemsData);
 
     // add new item to list
@@ -19,6 +19,7 @@ export default function Page() {
     return(
         <main>
             <h1 className={headerStyle}>Shopping List</h1>
+            
             {/* Render NewItem component and pass handleAddItem as a prop */}
             <NewItem onAddItem={handleAddItem} />
 

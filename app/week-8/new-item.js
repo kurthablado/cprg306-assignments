@@ -2,7 +2,7 @@
 
 const { useState } = require("react")
 
-export default function NewItem({onAddItem}){
+export default function NewItem({ onAddItem} ){
 
     // State variables
     const[name, setName] = useState("");
@@ -22,7 +22,7 @@ export default function NewItem({onAddItem}){
         const id = generateId();
 
         // Create item object
-        const item = {
+        const newItem = {
             id: id,
             name: name,
             quantity: quantity,
@@ -77,19 +77,19 @@ export default function NewItem({onAddItem}){
                 {/* Category */}
                 <div className="py-5">
                     <h3>Category</h3>
-                <select className="text-black" value={category} onChange={handleCategory}>
-                    <option defaultValue>Produce</option>
-                    <option value="dairy">Dairy</option>
-                    <option value="bakery">Bakery</option>
-                    <option value="meat">Meat</option>
-                    <option value="frozen-foods">Frozen Foods</option>
-                    <option value="canned-goods">Canned Goods</option>
-                    <option value="dry-goods">Dry Goods</option>
-                    <option value="beverages">Beverages</option>
-                    <option value="snacks">Snacks</option>
-                    <option value="household">Household</option>
-                    <option value="other">Other</option>
-                </select>
+                     <select className="text-black" value={category} onChange={handleCategory}>
+                        <option defaultValue>Produce</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="bakery">Bakery</option>
+                        <option value="meat">Meat</option>
+                        <option value="frozen-foods">Frozen Foods</option>
+                        <option value="canned-goods">Canned Goods</option>
+                        <option value="dry-goods">Dry Goods</option>
+                        <option value="beverages">Beverages</option>
+                        <option value="snacks">Snacks</option>
+                        <option value="household">Household</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
 
                 <div className="py-4">
