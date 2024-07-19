@@ -7,7 +7,9 @@ import itemsData from "../items.json";
 import MealIdeas from "../meal-ideas";
 import { useState } from "react";
 
-export default function Page() {
+let headerStyle = "text-4xl text-center font-bold mt-4";
+
+export default function ShoppingList() {
     const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
     if (!user) {
@@ -48,7 +50,7 @@ export default function Page() {
                 <ItemList items={items} onItemSelect={handleItemSelect}/>
             </div>
             
-            <div className="flex justify-center w-1/8 p-3">
+            <div className="flex justify-center border-2 border-red-500 mx-60 w-1/8 p-3">
                 {/* Render MealIdeas component and pass the selected ingredient */}
                 <MealIdeas ingredient={ingredient} />
             </div>

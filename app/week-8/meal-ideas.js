@@ -26,12 +26,14 @@ export default function MealIdeas({ ingredient }) {
 
     return(
         <div>
-            <h2>Meal Ideas</h2>
+            <h2 className="text-lg">Meal Ideas</h2>
             <ul>
                 {meals.map((meal) => (
                     <li key={meal.idMeal}>
-                    {meal.strMeal}
-                    <im src={meal.strMealThumb} alt={meal.strMeal} />
+                        <ul>
+                        {meal.strMeal}
+                        <im src={meal.strMealThumb} alt={meal.strMeal} />
+                        </ul>
                     </li>
                 ))}
             </ul>

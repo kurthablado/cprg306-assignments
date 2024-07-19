@@ -3,8 +3,6 @@
 // Import the useUserAuth hook
 import { useUserAuth } from "./_utils/auth-context";
 import ShoppingList from "./shopping-list/page";
-import { Route, useNavigate } from "react-router-dom";
-
 
 export default function Page() {
 
@@ -32,16 +30,6 @@ export default function Page() {
         }
     }
 
-    // Navigate to the shopping list page
-    // async function navShoppingList() {
-    //     try {
-    //         navigate("/shopping-list/page");
-
-    //     } catch {
-    //         console.log(error);
-    //     }
-    // }
-
 
     return (
         <main>
@@ -53,14 +41,16 @@ export default function Page() {
                         <div>
                             <p>Welcome {user.displayName}</p>
                             <p><img className="w-8 h-8"/>{user.photoURL}</p>
-                            {/* <Router>
-                                <nav>
-                                    <button onClick={navShoppingList} className="text-lg m-2 border-2 border-green-700 p-3 hover:underline">Continue to Shopping List</button>
-                                </nav>
-                            </Router> */}
+                            
+                            <a href="./week-8/shopping-list" className="text-lg m-2 border-2 border-green-700 p-3 hover:underline">Continue to Shopping List 
+                            </a>
+
+                            {/* Sign out Button  */}
                             <button onClick={handleSignOut} className="text-lg m-2 border-2 border-green-700 p-3 hover:underline">Sign Out</button>
                         </div>
+
                     ) : (
+
                         // User not logged in
                         <div>
                             <button onClick={handleSignIn} className="text-lg m-2 hover:underline">Sign In</button>

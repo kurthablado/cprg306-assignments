@@ -37,7 +37,6 @@ export default function MealIdeas({ ingredient }) {
             </ul>
         </div>
     );
-
 }
 
 // API Fetching Function
